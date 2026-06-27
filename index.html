@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopWave — Premium E-Commerce Store</title>
+  <meta name="description" content="Browse 194+ premium products across beauty, electronics, fashion and more. Fast shipping, great deals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVBAR ========== -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo" id="logo">
+        <span class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </span>
+        <span class="logo-text">Shop<span class="logo-accent">Wave</span></span>
+      </a>
+
+      <!-- Search -->
+      <div class="search-bar" id="search-bar">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-input" placeholder="Search products..." autocomplete="off" />
+      </div>
+
+      <!-- Cart Toggle -->
+      <button class="cart-toggle" id="cart-toggle" aria-label="Open cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== CATEGORY FILTER BAR ========== -->
+  <section id="filter-section">
+    <div class="filter-inner">
+      <div class="filter-chips" id="filter-chips">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN PRODUCT GRID ========== -->
+  <main id="main-content">
+    <div class="products-header">
+      <h1 id="products-heading">All Products</h1>
+      <p class="products-count" id="products-count"></p>
+    </div>
+
+    <!-- Skeleton / Loading -->
+    <div class="product-grid" id="product-grid">
+      <!-- products injected by JS -->
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state hidden" id="empty-state">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg>
+      <p>No products found</p>
+    </div>
+  </main>
+
+  <!-- ========== CART SIDEBAR ========== -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-body" id="cart-body">
+      <!-- cart items injected by JS -->
+    </div>
+
+    <div class="cart-empty hidden" id="cart-empty">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      <p>Your cart is empty</p>
+      <span>Browse products and add items to get started.</span>
+    </div>
+
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Discount</span>
+          <span id="cart-discount" class="discount-amount">-$0.00</span>
+        </div>
+        <div class="cart-summary-row cart-total-row">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+      </div>
+      <button class="btn-clear-cart" id="btn-clear-cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+        Clear Cart
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
